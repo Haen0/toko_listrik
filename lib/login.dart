@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.18.9/db_toko_listrik/login.php'), // Ganti dengan URL server Anda
+        Uri.parse('http://192.168.56.1/db_toko_listrik/login.php'), // Ganti dengan URL server Anda
         body: {
           'email': _emailController.text,
           'password': _passwordController.text,

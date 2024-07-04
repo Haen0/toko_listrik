@@ -37,7 +37,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
 
    // Metode untuk mengambil data produk dari API
   Future<void> fetchCartItems() async {
-    final url = Uri.parse('http://192.168.18.9/db_toko_listrik/tb_keranjang.php');
+    final url = Uri.parse('http://192.168.56.1/db_toko_listrik/tb_keranjang.php');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -76,7 +76,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   }
 
   Future<void> deleteCartItem(int productId) async {
-    final url = Uri.parse('http://192.168.18.9/db_toko_listrik/hapus_dikeranjang.php');
+    final url = Uri.parse('http://192.168.56.1/db_toko_listrik/hapus_dikeranjang.php');
     final response = await http.post(url, body: {'product_id': productId.toString()});
 
     if (response.statusCode == 200) {

@@ -46,7 +46,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   void removeCartItems() async {
-    final url = Uri.parse('http://192.168.18.9/db_toko_listrik/hapus_keranjang_checkout.php'); // Sesuaikan dengan URL endpoint PHP untuk menghapus produk dari keranjang
+    final url = Uri.parse('http://192.168.56.1/db_toko_listrik/hapus_keranjang_checkout.php'); // Sesuaikan dengan URL endpoint PHP untuk menghapus produk dari keranjang
     final response = await http.post(url);
 
     if (response.statusCode == 200) {
@@ -77,7 +77,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
   // Fungsi untuk mengambil data produk dari database
   Future<void> fetchCartData() async {
-    final url = Uri.parse('http://192.168.18.9/db_toko_listrik/tb_keranjang.php'); // Ganti dengan URL endpoint PHP Anda
+    final url = Uri.parse('http://192.168.56.1/db_toko_listrik/tb_keranjang.php'); // Ganti dengan URL endpoint PHP Anda
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -99,15 +99,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   void sendOrderData(Map<String, dynamic> data) async {
-  final url = Uri.parse('http://192.168.18.9/db_toko_listrik/tambah_pesanan.php'); // Ganti dengan URL endpoint PHP Anda
+  final url = Uri.parse('http://192.168.56.1/db_toko_listrik/tambah_pesanan.php'); // Ganti dengan URL endpoint PHP Anda
   final response = await http.post(url, body: data);
 
   if (response.statusCode == 200) {
     // Jika permintaan berhasil, lakukan navigasi ke halaman invoice atau tampilkan pesan sukses
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => InvoicePage()),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => InvoicePage()),
+    // );
     removeCartItems();
   } else {
     // Jika terjadi kesalahan, tampilkan pesan atau tindakan yang sesuai

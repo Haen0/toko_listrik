@@ -68,7 +68,7 @@ class TransactionPage extends StatelessWidget {
   }
 
   Future<List<Map<String, dynamic>>> fetchOrders(String status) async {
-    final url = Uri.parse('http://192.168.18.9/db_toko_listrik/tb_pesanan.php?status=$status');
+    final url = Uri.parse('http://192.168.56.1/db_toko_listrik/tb_pesanan.php?status=$status');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

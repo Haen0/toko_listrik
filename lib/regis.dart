@@ -40,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.18.9/db_toko_listrik/register.php'), // Ganti dengan URL server Anda
+        Uri.parse('http://192.168.56.1/db_toko_listrik/register.php'), // Ganti dengan URL server Anda
         body: {
           'name': _nameController.text,
           'email': _emailController.text,

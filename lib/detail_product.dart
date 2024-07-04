@@ -357,7 +357,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       // Panggil API untuk menyimpan ke keranjang
       // Misal menggunakan http package atau package lain sesuai kebutuhan
       final response = await http.post(
-        Uri.parse('http://192.168.18.9/db_toko_listrik/tambah_kekeranjang.php'), // Ganti dengan URL endpoint API Anda
+        Uri.parse('http://192.168.56.1/db_toko_listrik/tambah_kekeranjang.php'), // Ganti dengan URL endpoint API Anda
         body: {
           'id_pembeli': '1', // Ganti dengan id pembeli yang sesuai
           'id_produk': widget.idProduk.toString(), // Mengambil id_produk dari widget

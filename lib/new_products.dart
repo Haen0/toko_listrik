@@ -72,7 +72,7 @@ class _NewProductPageState extends State<NewProductPage> {
   late Future<List<Product>> futureProducts;
 
   Future<List<Product>> fetchProducts() async {
-  final response = await http.get(Uri.parse('http://192.168.18.9/db_toko_listrik/tb_products.php'));
+  final response = await http.get(Uri.parse('http://192.168.56.1/db_toko_listrik/tb_products.php'));
 
   if (response.statusCode == 200) {
     List<dynamic> jsonResponse = json.decode(response.body);
