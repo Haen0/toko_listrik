@@ -29,26 +29,26 @@ class SettingProfile extends StatelessWidget {
                 );
               },
             ),
-            buildListTileWithBorder(
-              icon: Icons.receipt,
-              title: 'Pesanan Saya',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OrderHistoryPage()),
-                );
-              },
-            ),
-            buildListTileWithBorder(
-              icon: Icons.chat,
-              title: 'Chat',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ChatListPage()),
-                );
-              },
-            ),
+            // buildListTileWithBorder(
+            //   icon: Icons.receipt,
+            //   title: 'Pesanan Saya',
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => OrderHistoryPage()),
+            //     );
+            //   },
+            // ),
+            // buildListTileWithBorder(
+            //   icon: Icons.chat,
+            //   title: 'Chat',
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => ChatListPage()),
+            //     );
+            //   },
+            // ),
             buildListTileWithBorder(
               icon: Icons.help,
               title: 'Bantuan',

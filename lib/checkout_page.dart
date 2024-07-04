@@ -76,49 +76,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
       decimalDigits: 0,
     );
 
-  // Future<void> buatPesanan(BuildContext context) async {
-  //   final url = 'http://192.168.56.1/db_toko_listrik/tambah_pesanan.php'; // Ganti dengan URL endpoint Anda
-  //   final idPembeli = 1; // Ganti dengan ID pembeli yang sesuai
-  //   final alamat = '-'; // Ganti dengan alamat yang sesuai
-  //   final metodePembayaran = 'Dana'; // Ganti dengan metode pembayaran yang sesuai
-  //   final totalPembayaran = calculateTotalPembayaran(calculateTotalPrice(), 5000); // Ganti dengan perhitungan total pembayaran yang sesuai
-
-  //   final produkPesanan = products.map((product) {
-  //     return {
-  //       'id_produk': product.idProduk,
-  //       'quantity': product.quantity,
-  //     };
-  //   }).toList();
-
-  //   final response = await http.post(
-  //     Uri.parse(url),
-  //     body: {
-  //       'id_pembeli': idPembeli.toString(),
-  //       'alamat': alamat,
-  //       'metode_pembayaran': metodePembayaran,
-  //       'total_pembayaran': totalPembayaran.toString(),
-  //       'produk_pesanan': json.encode(produkPesanan),
-  //     },
-  //   );
-
-  //   if (response.statusCode == 200) {
-  //     final responseBody = json.decode(response.body);
-  //     if (responseBody['error'] == null) {
-  //       final idPesanan = responseBody['id_pesanan'];
-  //       print('ID Pesanan Baru: $idPesanan');
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(responseBody['message'])));
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => InvoicePage()),
-  //       );
-  //     } else {
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(responseBody['error'])));
-  //     }
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal membuat pesanan')));
-  //   }
-  // }
-
 Future<void> buatPesanan(BuildContext context) async {
   final url = 'http://192.168.56.1/db_toko_listrik/tambah_pesanan.php';
   final idPembeli = 1;
@@ -147,19 +104,28 @@ Future<void> buatPesanan(BuildContext context) async {
   if (response.statusCode == 200) {
     final responseBody = json.decode(response.body);
     if (responseBody['error'] == null) {
-      final idPesanan = responseBody['id_pesanan'];
-      // print('ID Pesanan Baru: $idPesanan');
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(responseBody['message'])));
+      final idPesanan = responseBody['id_pesanan'].toString();
+      print('ID Pesanan Baru: $idPesanan');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(responseBody['message'])),
+      );
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => InvoicePage(idPesanan: idPesanan)), // Kirim ID Pesanan ke InvoicePage
+        MaterialPageRoute(
+          builder: (context) => InvoicePage(),
+        ),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(responseBody['error'])));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(responseBody['error'])),
+      );
     }
   } else {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal membuat pesanan')));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Gagal membuat pesanan: ${response.reasonPhrase}')),
+    );
   }
+
 }
 
 
